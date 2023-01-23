@@ -1,29 +1,27 @@
-const consoleTable = require("console.table");
+const cTable = require("console.table");
 const mysql = require("mysql2");
 // const src = require("")
 const fs = require("fs");
-const department = require("./lib/department");
-const employee = require("./lib/employee");
-const role = require("./lib/role");
-const { default: inquirer } = require("inquirer");
+const inquirer = require("inquirer");
 const { allowedNodeEnvironmentFlags } = require("process");
 const Department = require("./lib/department");
 const Role = require("./lib/role");
 const Employee = require("./lib/employee");
+const createEmployeeDb = [];
 
-const con = mysql.createConnection(
-  {host:'localhost', user: 'root', database: 'test'}
-);
-con.promise().query("SELECT 1")
-  .then( ([rows,fields]) => {
-    console.log(rows);
-  })
-  .catch(console.log)
-  .then( () => con.end());
+// const con = mysql.createConnection(
+//   {host:'localhost', user: 'root', database: 'test'}
+// );
+// con.promise().query("SELECT 1")
+//   .then( ([rows,fields]) => {
+//     console.log(rows);
+//   })
+//   .catch(console.log)
+//   .then( () => con.end());
 
-startQuestions();
+createEmployeeTable();
 
-function startQuestions() {
+function createEmployeeTable() {
     inquirer
         .prompt([
             {
@@ -63,16 +61,9 @@ function startQuestions() {
         })
 }
 
-function viewDepartments() {
-    //show table
-
-    // inquirer
-    //     .prompt([
-    //         {
-    //             type: ""
-    //         }
-    //     ])
-}
+// function viewDepartments() {
+     //show table
+// }
 
 // function viewRoles {
     //show table
@@ -163,7 +154,7 @@ function addEmployee() {
                 answers.role,
                 answers.manager,
             );
-            createEmployeeDb.push(role);
+            createEmployeeDb.push(employee);
 
             createEmployeeTable();
         });
@@ -183,7 +174,7 @@ function updateEmployee() {
             const updateEmployee = new updateEmployee(
                 answers.nameUpdate,
             );
-            createEmployeeDb.push(role);
+            createEmployeeDb.push(updateEmployee);
 
             createEmployeeTable();
         });
