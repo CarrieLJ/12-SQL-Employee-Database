@@ -7,6 +7,9 @@ const employee = require("./lib/employee");
 const role = require("./lib/role");
 const { default: inquirer } = require("inquirer");
 const { allowedNodeEnvironmentFlags } = require("process");
+const Department = require("./lib/department");
+const Role = require("./lib/role");
+const Employee = require("./lib/employee");
 
 const con = mysql.createConnection(
   {host:'localhost', user: 'root', database: 'test'}
@@ -59,3 +62,130 @@ function startQuestions() {
             }
         })
 }
+
+function viewDepartments() {
+    //show table
+
+    // inquirer
+    //     .prompt([
+    //         {
+    //             type: ""
+    //         }
+    //     ])
+}
+
+// function viewRoles {
+    //show table
+// }
+
+// function viewEmployees {
+    // show table
+// }
+
+function addDepartment() {
+    inquirer
+        .prompt([
+            {
+               type: "input",
+               name: "department",
+                message: "Enter name of new department:",
+            },
+        ])
+        .then((answers) => {
+            const department = new Department(
+                answers.department,
+            );
+            createEmployeeDb.push(department);
+
+            createEmployeeTable();
+        });
+}
+function addRole() {
+    inquirer
+        .prompt([
+            {
+                type: "input",
+                name: "role",
+                message: "Adde new role:",
+            },
+            {
+                type: "input",
+                name: "salary",
+                message: "Enter the salary:",
+            },
+            {
+                //update to choices list?
+                type: "input",
+                name: "department",
+                message: "Enter the department:",
+            },
+        ])
+        .then((answers) => {
+            const role = new Role(
+                answers.role,
+                answers.salary,
+                answers.department,
+            );
+            createEmployeeDb.push(role);
+
+            createEmployeeTable();
+        });
+}
+function addEmployee() {
+    inquirer
+        .prompt([
+            {
+                type: "input",
+                name: "firstName",
+                message: "First name:",
+            },
+            {
+                type: "input",
+                name: "lastName",
+                message: "Last name:",
+            },
+            {
+                //update to choices?
+                type: "input",
+                name: "role",
+                message: "Which role does this employee have:",
+            },
+            {
+                type: "input",
+                name: "manager",
+                message: "Who is their manager?",
+            },
+        ])
+        .then((answers) => {
+            const employee = new Employee(
+                answers.firstName,
+                answers.lastName,
+                answers.role,
+                answers.manager,
+            );
+            createEmployeeDb.push(role);
+
+            createEmployeeTable();
+        });
+}
+
+function updateEmployee() {
+    inquirer
+        .prompt([
+            {
+                type: "lsit",
+                name: "nameUpdate",
+                message: "Which employee would you like to update:",
+                choices: [],
+            },
+        ])
+        .then((answers) => {
+            const updateEmployee = new updateEmployee(
+                answers.nameUpdate,
+            );
+            createEmployeeDb.push(role);
+
+            createEmployeeTable();
+        });
+}
+    
