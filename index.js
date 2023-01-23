@@ -61,9 +61,9 @@ function createEmployeeTable() {
         })
 }
 
-// function viewDepartments() {
-     //show table
-// }
+function viewDepartments() {
+     console.table(["./db/seeds.sql"])
+};
 
 // function viewRoles {
     //show table
