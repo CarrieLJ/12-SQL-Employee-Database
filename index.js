@@ -1,4 +1,5 @@
 const cTable = require("console.table");
+const Table = require("easy-table");
 const mysql = require("mysql2");
 // const src = require("")
 const fs = require("fs");
@@ -62,7 +63,18 @@ function createEmployeeTable() {
 }
 
 function viewDepartments() {
-     console.table(["./db/seeds.sql"])
+     const departmentTable = [
+        { id, name },
+     ]
+     const d = new ViewDepartments
+
+     viewDepartments.forEach(function(data) {
+        d.cell('Id', data.id)
+        d.cell('Department', data.name)
+        d.newRow()
+     }) 
+
+     console.log(d.toString())
 };
 
 // function viewRoles {
