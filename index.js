@@ -1,37 +1,12 @@
 const cTable = require("console.table");
 const Table = require("easy-table");
-const mysql = require("mysql2");
-const express = require("express");
-const path = require("path");
-// const src = require("")
+const db = require('./db');
 // const fs = require("fs");
 const inquirer = require("inquirer");
-const { allowedNodeEnvironmentFlags } = require("process");
-const Department = require("./lib/department");
-const Role = require("./lib/role");
-const Employee = require("./lib/employee");
 const createEmployeeDb = [];
 // const schema = require("./db/schema.sql");
 
-const PORT = process.env.PORT || 3001;
-const app = express();
 
-app.use(express.urlencoded({ extended: false }));
-app.use(express.json());
-
-const con = mysql.createConnection(
-    {host:'localhost', 
-    user: 'root', 
-    database: 'employees_db'
-    },
-    console.log(`Connected to the employees_db database.`)
-);
-// con.promise().query("SELECT 1")
-//   .then( ([rows,fields]) => {
-//     console.log(rows);
-//   })
-//   .catch(console.log)
-//   .then( () => con.end());
 
 createEmployeeTable();
 
@@ -68,36 +43,21 @@ function createEmployeeTable() {
                 case "Update an employee role":
                     updateEmployee();
                     break;
-                    // default:
-                    //     generateTable(employeeDb[0]);
+                    default:
+                        quit(); //call out process.exit
                         
             }
         })
 }
 
 function viewDepartments() {
-    // app.post('/api/department', ({ body }, res) => {
-    //     const departmentSql = `INSERT INTO department (name)
-    //       VALUES (?)`;
-    //     const params = [body.name];
-        
-    //     db.departmentQuery(sql, params, (err, result) => {
-    //       if (err) {
-    //         res.status(400).json({ error: err.message });
-    //         return;
-    //       }
-    //       res.json({
-    //         message: 'success',
-    //         data: body
-    //       });
-    //     });
-    //   });
-      
-
-    con.query('SELECT * FROM department', function (err, results) {
-        // console.table(['department.id', 'department.name'], ('./db/seeds'));
-    });
-};
+    db.findDepartments()
+    .then(([rows]) => {
+        let department = rows;
+        console.table(department);
+    })
+    .then(() => createEmployeeTable);
+}
 
 // function viewRoles {
     //show table

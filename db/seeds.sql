@@ -4,9 +4,11 @@ VALUES ("Management"),
         ("IT"),
 
 INSERT INTO role (title, salary, department_id)
-VALUES ("Manager", 90000),
-        ("Project Coordinator", 60000),
-        ("IT Technician", 70000),
+VALUES ("Manager", 90000, 1),
+        ("Project Coordinator", 60000, 2),
+        ("IT Technician", 70000, 3),
 
 INSERT INTO employee (first_name, last_name, role_id, manager_id)
-VALUES ("Sam", "Smith", )
+VALUES ("Sam", "Smith", 1),
+
+
