@@ -93,6 +93,13 @@ function addDepartment() {
             createEmployeeDb.push(department);
 
             createEmployeeTable();
+            // db.findDepartments()
+            // .then(([rows]) => {
+            //     let department = rows;
+            //     console.table(department);
+            // })
+            // .then(() => createEmployeeTable);
+        
         });
 }
 function addRole() {
@@ -178,7 +185,7 @@ function updateEmployee() {
                 type: "list",
                 name: "roleUpdate",
                 message: "Which roll do you want to assign the selected employee?",
-                choices: [,]
+                choices: [],
             }
         ])
         .then((answers) => {
