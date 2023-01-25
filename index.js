@@ -59,9 +59,23 @@ function viewDepartments() {
     .then(() => createEmployeeTable);
 }
 
-// function viewRoles {
-    //show table
-// }
+function viewRoles() {
+    db.findRoles()
+    .then(([rows]) => {
+        let roles = rows;
+        console.table(roles);
+    })
+    .then(() => createEmployeeTable);
+}
+
+function viewEmployees() {
+    db.findEmployee()
+    .then(([rows]) => {
+        let employee = rows;
+        console.table(employee);
+    })
+    .then(() => createEmployeeTable);
+}
 
 // function viewEmployees {
     // show table
