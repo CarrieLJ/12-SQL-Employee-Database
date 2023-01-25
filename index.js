@@ -77,10 +77,6 @@ function viewEmployees() {
     .then(() => createEmployeeTable);
 }
 
-// function viewEmployees {
-    // show table
-// }
-
 function addDepartment() {
     inquirer
         .prompt([
@@ -113,10 +109,10 @@ function addRole() {
                 message: "Enter the salary:",
             },
             {
-                //update to choices list?
-                type: "input",
+                type: "list",
                 name: "department",
-                message: "Enter the department:",
+                message: "Which department does this role belong to:",
+                choices: [],
             },
         ])
         .then((answers) => {
