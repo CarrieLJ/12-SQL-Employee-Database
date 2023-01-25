@@ -11,7 +11,7 @@
 //     {
 //       host: 'localhost',
 //       user: 'root',
-//       password: '',
+//       password: '1207Grapes!',
 //       database: 'employees_db'
 //     },
 //     console.log(`Connected to the employees_db database.`)
