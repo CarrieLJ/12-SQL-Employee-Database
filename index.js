@@ -140,15 +140,16 @@ function addEmployee() {
                 message: "Last name:",
             },
             {
-                //update to choices?
-                type: "input",
+                type: "list",
                 name: "role",
                 message: "Which role does this employee have:",
+                choices: [],
             },
             {
-                type: "input",
+                type: "list",
                 name: "manager",
                 message: "Who is their manager?",
+                choices: [],
             },
         ])
         .then((answers) => {
@@ -173,6 +174,12 @@ function updateEmployee() {
                 message: "Which employee would you like to update:",
                 choices: [],
             },
+            {
+                type: "list",
+                name: "roleUpdate",
+                message: "Which roll do you want to assign the selected employee?",
+                choices: [,]
+            }
         ])
         .then((answers) => {
             const updateEmployee = new updateEmployee(
