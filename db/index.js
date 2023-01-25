@@ -13,10 +13,10 @@ class DB {
     findRoles() {
         return this.connection.promise().query('SELECT role.is, role.title, role.salary FROM role;');
     }
-    
+
     findEmployee() {
         return this.connection.promise().query('SELECT employee.id, employee.first_name, employee.last_name, employee.role_id FROM employee;');
     }
 }
 
-module.exports = new DB();
+module.exports = new DB(connection);
