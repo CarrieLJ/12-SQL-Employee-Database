@@ -2,17 +2,21 @@ const cTable = require("console.table");
 const Table = require("easy-table");
 const mysql = require("mysql2");
 // const src = require("")
-const fs = require("fs");
+// const fs = require("fs");
 const inquirer = require("inquirer");
 const { allowedNodeEnvironmentFlags } = require("process");
 const Department = require("./lib/department");
 const Role = require("./lib/role");
 const Employee = require("./lib/employee");
 const createEmployeeDb = [];
+// const schema = require("./db/schema.sql");
 
-// const con = mysql.createConnection(
-//   {host:'localhost', user: 'root', database: 'test'}
-// );
+const con = mysql.createConnection(
+    {host:'localhost', 
+    user: 'root', 
+    database: 'employees_db'
+    }
+);
 // con.promise().query("SELECT 1")
 //   .then( ([rows,fields]) => {
 //     console.log(rows);
@@ -63,18 +67,9 @@ function createEmployeeTable() {
 }
 
 function viewDepartments() {
-     const departmentTable = [
-        { id, name },
-     ]
-     const d = new ViewDepartments
-
-     viewDepartments.forEach(function(data) {
-        d.cell('Id', data.id)
-        d.cell('Department', data.name)
-        d.newRow()
-     }) 
-
-     console.log(d.toString())
+    con.query('SELECT * FROM department', function (err, results) {
+        console.table(['department.id', 'department.name'], ('./db/seeds'));
+    });
 };
 
 // function viewRoles {
