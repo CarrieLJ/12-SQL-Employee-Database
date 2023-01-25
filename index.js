@@ -56,7 +56,7 @@ function viewDepartments() {
         let department = rows;
         console.table(department);
     })
-    .then(() => createEmployeeTable);
+    .then(() => createEmployeeTable());
 }
 
 function viewRoles() {
@@ -65,7 +65,7 @@ function viewRoles() {
         let roles = rows;
         console.table(roles);
     })
-    .then(() => createEmployeeTable);
+    .then(() => createEmployeeTable());
 }
 
 function viewEmployees() {
@@ -74,7 +74,7 @@ function viewEmployees() {
         let employee = rows;
         console.table(employee);
     })
-    .then(() => createEmployeeTable);
+    .then(() => createEmployeeTable());
 }
 
 function addDepartment() {

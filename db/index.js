@@ -11,7 +11,7 @@ class DB {
 
     }
     findRoles() {
-        return this.connection.promise().query('SELECT role.is, role.title, role.salary FROM role;');
+        return this.connection.promise().query('SELECT role.id, role.title, role.salary FROM role;');
     }
 
     findEmployee() {
