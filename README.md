@@ -10,7 +10,7 @@ NA
 In order to use the employee database, open the command line and enter: node index.js to start the prompts. Go through the options by using the arrow keys. 
 ![prompt_questions](https://user-images.githubusercontent.com/114967552/214978748-55009a1e-bc2a-4669-8e17-483169bcc607.JPG)
 
-Link to video: 
+Link to video: https://drive.google.com/file/d/1G_48-PImIx4gw6d94RzHZswANlHme-h5/view?usp=sharing
 
 ## Credits
 NA
